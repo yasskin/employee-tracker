@@ -1,0 +1,5 @@
+require('./lib/division')
+Division.create({:name => 'Human Resources'})
+Division.create({:name => 'Sales'})
+Division.create({:name => 'IT'})
+Division.create({:name => 'Software Engineer Gods'})
