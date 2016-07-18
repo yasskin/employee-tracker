@@ -14,6 +14,11 @@ get('/') do
   erb(:index)
 end
 
+post('/employee/new') do
+  Employee.create({:name =>  params.fetch('employee-name'), :division_id => params.fetch('division_id')})
+  redirect to "/division/#{params.fetch('division_id')}"
+end
+
 post('/division/new') do
   Division.create({:name => params.fetch('division-name')})
   redirect to '/'

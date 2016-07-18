@@ -9,20 +9,13 @@
   </ul>
 <% end %>
 
-<h3>Add an existing employee to a division</h3>
+<h3>Add a employee to a division</h3>
 
-  <% if @division.employees().any? %>
-    <form class="form-group" action="/division/employee/add" method="post">
-      <label for="employee_id">Add an Employee</label>
-       <select id='employee_id' name='employee_id' type='text' required>
-         <option value=""></option>
-         <% @division.employees.each() do |employee| %>
-           <option value="<%= employee.id()%>"> <%= employee.name() %></option>
-         <% end %>
-       </select>
-      <button class="btn btn-primary" type="submit">Add Stop</button>
-    </form>
-  <% else %>
-  <a href="/">Add a new employee</a>
-  <% end %>
+  <form class="form-group" action="/employee/new" method="post">
+    <label for="employee-name">employee name</label>
+    <input class="form-control" type="text" name="employee-name">
+    <input type="hidden" name="division_id" value="<%= @division.id %>">
+    <button class="btn btn-primary" type="submit">Add Employee</button>
+  </form>
+
 </div>
