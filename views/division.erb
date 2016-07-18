@@ -1,0 +1,8 @@
+<h1><%= @division.name %></h1>
+<% if @division.employees().any? %>
+  <ul>
+    <% @division.employees.each do | employee | %>
+      <li><%= employee.name %></li>
+    <% end %>
+  </ul>
+<% end %>

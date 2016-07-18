@@ -1,0 +1,98 @@
+<h1>Employee Tracker</h1>
+  <h4>Human Resources Manager</h4>
+  <hr>
+<div class="row">
+  <div class="col-md-3 col-md-offset-1">
+    <% if @divisions.any?() %>
+      <h3>Divisions:</h3>
+      <ul>
+        <% @divisions.each() do |division| %>
+          <li><a href="/division/<%= division.id()%>"> <%= division.name() %></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>
+        There are no divisions yet!
+      </p>
+    <% end %>
+    <hr>
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+    <h3>Employees:</h3>
+    <% if @employees.any?() %>
+    <ul>
+      <% @employees.each() do |employee| %>
+        <li> <a href="/employee/<%= employee.id()%>"><%= employee.name() %></a> </li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>
+      There are no employees yet.
+    </p>
+    <% end %>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      <h3>Add a division</h3>
+      <form class="form-group" action="/division/new" method="post">
+        <label for="division-name">division name</label>
+        <input class="form-control" type="text" name="division-name">
+        <button class="btn btn-primary" type="submit">Add division</button>
+      </form>
+      <hr>
+    </div>
+  <div class="col-md-3 col-md-offset-2">
+    <h3>Add a employee</h3>
+    <form class="form-group" action="/employee/new" method="post">
+      <label for="employee-name">employee name</label>
+      <input class="form-control" type="text" name="employee-name">
+      <label for="division_id">Select a Division</label>
+       <select id='division_id' name='division_id' type='text' required>
+         <option value=""></option>
+         <% @divisions.each() do |division| %>
+           <option value="<%= division.id()%>"> <%= division.name() %></option>
+         <% end %>
+       </select>
+      <button class="btn btn-primary" type="submit">Add Stop</button>
+    </form>
+  </div>
+</div>
+<hr>
+<h1>Employee Tracker</h1>
+  <h4>Project Manager Dashboard</h4>
+  <hr>
+<div class="row">
+  <div class="col-md-3 col-md-offset-1">
+    <h3>See the Divisions</h3>
+    <% if @divisions.any?() %>
+      <h3>divisions:</h3>
+      <ul>
+        <% @divisions.each() do |division| %>
+          <li><a href="/divisions/<%= division.id()%>"> <%= division.name() %></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>
+        There are no divisions yet!
+      </p>
+    <% end %>
+    <hr>
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+    <h3>Find divisions by employee</h3>
+    <% if @employees.any?() %>
+    <ul>
+      <% @employees.each() do |employee| %>
+        <li><a href="/employee_stops/<%= employee.id()%>"><%= employee.name()%></a></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>
+      There are no employees added.
+    </p>
+    <% end %>
+  </div>
+</div>
