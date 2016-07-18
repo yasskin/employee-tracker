@@ -1,5 +1,7 @@
 <div class="col-md-3 col-md-offset-2">
-
-
-
+<h3><%= @employee.name %></h3>
+<form action="/employee/<%= @employee.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">You're Fired!</button>
+</form>
 </div>

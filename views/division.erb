@@ -1,10 +1,21 @@
 <div class="col-md-3 col-md-offset-2">
 
-<h1><%= @division.name %></h1>
+<h1>DIVISION</h1>
+<h3><%= @division.name %></h3>
+<form action="/division/<%= @division.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <button type="submit" class="btn btn-success">Edit</button>
+</form>
+<form action="/division/<%= @division.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Delete Division</button>
+</form>
+<hr>
+<br>
 <% if @division.employees().any? %>
   <ul>
     <% @division.employees.each do | employee | %>
-      <li><%= employee.name %></li>
+      <li><a href="/employee/<%= employee.id %>"><%= employee.name %></a></li>
     <% end %>
   </ul>
 <% end %>

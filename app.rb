@@ -28,3 +28,20 @@ get('/division/:id') do
   @division = Division.find(params.fetch('id'))
   erb(:division)
 end
+
+get('/employee/:id') do
+  @employee = Employee.find(params.fetch('id'))
+  erb(:employee)
+end
+
+delete('/employee/:id') do
+  employee = Employee.find(params.fetch('id'))
+  employee.destroy()
+  redirect to "/"
+end
+
+delete('/division/:id') do
+  division = Division.find(params.fetch('id'))
+  division.destroy()
+  redirect to "/"
+end
